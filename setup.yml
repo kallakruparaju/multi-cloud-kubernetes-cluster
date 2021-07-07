@@ -1,0 +1,23 @@
+- hosts: masternode
+  vars_prompt:
+  - name: "k8s_master_ip"
+    prompt: "Enter the master public ip: "
+    private: no
+  roles:
+  - name: "configuring Master node"
+    role: kubernetes_master
+
+- hosts: slavenode
+  roles:
+  - name: "configuring slave node"
+    role: kubernetes_slave
+
+#- hosts: nfsserver 
+#  roles:
+#  - name: "configuring Master node"
+#    role: nfs_server
+
+#- hosts: masternode 
+#  roles:
+#  - name: "deploying wordpress"
+#    role: wordpress
